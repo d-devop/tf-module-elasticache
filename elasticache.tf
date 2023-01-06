@@ -1,4 +1,4 @@
-resource "aws_db_subnet_group" "elasticache" {
+resource "aws_elasticache_subnet_group" "elasticache" {
   name       = "${var.env}-elasticache"
   subnet_ids = local.app_subnets_ids
 
@@ -14,5 +14,5 @@ resource "aws_elasticache_cluster" "redis" {
   num_cache_nodes = var.num_cache_nodes
   engine_version  = var.engine_version
   port            = 6379
-  az_mode         = "cross-az"
+  az_mode         = var.az_mode
 }
