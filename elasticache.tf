@@ -15,4 +15,6 @@ resource "aws_elasticache_cluster" "redis" {
   engine_version  = var.engine_version
   port            = 6379
   az_mode         = var.az_mode
+  security_group_ids = [aws_security_group.allow_elasticache.id]
+  subnet_group_name  = aws_elasticache_subnet_group.elasticache.name
 }
